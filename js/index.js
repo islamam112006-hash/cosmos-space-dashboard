@@ -15,12 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set max date for the calendar
   var todayDate = new Date().toISOString().split("T")[0];
   var dateInput = document.getElementById("apod-date-input");
-  document.getElementById("apod-date-display").innerText =
-    new Date().toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
+ var dateDisplay = document.getElementById("apod-date-display");
+if (dateDisplay) {
+  dateDisplay.innerText = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
   if (dateInput) {
     dateInput.max = todayDate;
     dateInput.value = todayDate;
@@ -674,7 +676,7 @@ function showPlanetDetails(planetId) {
   // Update the big planet card
   document.getElementById("planet-detail-name").innerText = planet.englishName;
   document.getElementById("planet-detail-image").src =
-    "./assets/images/" + planetId + ".png";
+    "images/" + planetId + ".png";
 
   // Update scientific numbers
   document.getElementById("planet-perihelion").innerText =
